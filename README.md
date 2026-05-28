@@ -73,11 +73,22 @@ O projeto possui scripts facilitadores para gravação de testes:
   npm run record
   ```
 
+## 🏗️ Arquitetura e Page Objects
+
+Este projeto utiliza o padrão **Page Objects** para organizar os seletores e as interações com a página, facilitando a manutenção e o reaproveitamento de código.
+
+As classes de página estão localizadas no diretório `pages/`:
+
+*   **`HomePage`**: Gerencia as interações com a página inicial, validações de texto de boas-vindas e navegação inicial.
+*   **`AutomotiveModelsPage`**: Gerencia a tela de modelos automotivos, incluindo:
+    *   Filtragem de veículos.
+    *   Criação de novos modelos.
+    *   Edição e Exclusão de veículos.
+    *   Auxiliares para limpeza e preenchimento de campos com máscara.
+
 ## 📁 Estrutura do Projeto
 
+* `pages/`: Contém as classes de Page Objects (`.ts`).
 * `tests/`: Contém os arquivos de teste `.spec.js`.
 * `playwright.config.js`: Configurações globais do Playwright.
 * `package.json`: Dependências e scripts do projeto.
-
----
-Desenvolvido para automação de testes.
