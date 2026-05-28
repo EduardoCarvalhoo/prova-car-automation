@@ -1,0 +1,29 @@
+{
+  "name": "prova-car-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "record": "npx playwright codegen --target=javascript",
+    "record:spec": "npx playwright codegen --target=javascript --output=tests/ProvaCar.recorded.spec.js",
+    "report": "playwright test && playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduardoCarvalhoo/prova-car-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EduardoCarvalhoo/prova-car-automation/issues"
+  },
+  "homepage": "https://github.com/EduardoCarvalhoo/prova-car-automation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  }
+}
