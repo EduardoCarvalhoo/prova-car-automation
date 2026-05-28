@@ -7,7 +7,7 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "record": "npx playwright codegen --target=javascript",
-    "record:spec": "npx playwright codegen --target=javascript --output=tests/ProvaCar.recorded.spec.js",
+    "record:spec": "npx playwright codegen https://provaqa.fandi.com.br/ --target=javascript --output=tests/ProvaCar.recorded.spec.js",
     "report": "playwright test && playwright show-report"
   },
   "repository": {
