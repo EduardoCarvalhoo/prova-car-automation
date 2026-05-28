@@ -14,3 +14,15 @@ test('Acessar a página de listagem de modelos automotivos do ProvaCar e validar
   await automotiveModelsPage.validateFilters();
 
 });
+
+test('Acessar a página de listagem e atualizar o modelo de automóvel do fabricante ACURA, da familia NSX e molicar 07000301-4 ', async ({ page }) => {
+  const automotiveModelsPage = new AutomotiveModelsPage(page);
+  const homePage = new HomePage(page);
+
+  await homePage.access();
+  await homePage.clickStartButton();
+  await homePage.accessTemplatesScreen();
+  await automotiveModelsPage.validateFilters();
+  await automotiveModelsPage.updateVehicle();
+
+});
