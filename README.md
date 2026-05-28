@@ -88,7 +88,7 @@ As classes de página estão localizadas no diretório `pages/`:
 
 ## 📁 Estrutura do Projeto
 
-* `pages/`: Contém as classes de Page Objects (`.ts`).
+* `pages/`: Contém as classes de Page Objects (`.js`).
 * `tests/`: Contém os arquivos de teste `.spec.js`.
 * `playwright.config.js`: Configurações globais do Playwright.
 * `package.json`: Dependências e scripts do projeto.

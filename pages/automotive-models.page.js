@@ -1,8 +1,10 @@
-import { expect, Page, Locator } from '@playwright/test';
+import { expect } from '@playwright/test';
 
 export class AutomotiveModelsPage {
 
-    constructor(private page: Page) { }
+    constructor(page) {
+        this.page = page;
+    }
 
     async validateFilters() { // Valida a funcionalidade de filtros preenchendo diversos campos de busca
         await this.page.locator('.form-group').filter({ hasText: 'Tipo:' }).locator('select').selectOption('1');
@@ -48,7 +50,7 @@ export class AutomotiveModelsPage {
         await expect(this.page.getByText('Modelo Cadastrado com sucesso')).toBeVisible();
     }
 
-    async clearAndFill(locator: Locator, value: string): Promise<void> { // Método auxiliar para limpar campos antes de preenchê-los
+    async clearAndFill(locator, value) { // Método auxiliar para limpar campos antes de preenchê-los
         await locator.clear();
         await locator.fill(value);
     }

@@ -1,8 +1,10 @@
-import { expect, Page } from '@playwright/test';
+import { expect } from '@playwright/test';
 
 export class HomePage {
 
-  constructor(private page: Page) { }
+  constructor(page) {
+    this.page = page;
+  }
 
   async access() { // Acessa a página inicial do sistema
     await this.page.goto('https://provaqa.fandi.com.br/');
@@ -26,4 +28,4 @@ export class HomePage {
   async accessTemplatesScreen() { // Valida o acesso à tela de modelos através do logo FANDI
     await expect(this.page.getByRole('img', { name: 'FANDI' })).toBeVisible();
   }
-}  
+}
