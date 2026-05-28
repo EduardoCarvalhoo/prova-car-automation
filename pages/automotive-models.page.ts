@@ -1,4 +1,4 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Page, Locator } from '@playwright/test';
 
 export class AutomotiveModelsPage {
 
@@ -20,5 +20,37 @@ export class AutomotiveModelsPage {
         await this.page.locator('.form-group').filter({ hasText: 'Cilindradas' }).locator('input').fill('3000');
         await this.page.getByRole('button', { name: 'Salvar' }).click();
         await expect(this.page.getByText('Modelo Atualizado com sucesso')).toBeVisible();
+    }
+
+    async deleteVehicle() {
+        await this.page.locator('[data-bind*="RemoverModelo"]').first().click();
+    }
+
+    async createModel() {
+        await this.page.locator('#botaoNovoVeiculo').click();
+        await this.page.locator('#novoFabricante').selectOption('32');
+        await this.page.locator('[data-bind*="options: NovoModelo.FamiliaFiltrado"]').selectOption('150');
+        await this.page.locator('[data-bind*="value: NovoModelo.Molicar"]').fill('123456');
+        await this.page.locator('[data-bind="value: NovoModelo.Modelo"]').fill('Civic');
+        await this.page.locator('[data-bind*="NovoModelo.CombustivelSelecionado"]').selectOption('GG');
+
+        const portasInput = this.page.locator('[data-bind*="portaMask: NovoModelo.Portas"]')
+        await this.clearAndFill(portasInput, '4');
+
+        const cilindradasInput = this.page.locator('[data-bind*="anoVeiculoMask: NovoModelo.AnoInicio"]');
+        await this.clearAndFill(cilindradasInput, '2025');
+
+        const anoFimInput = this.page.locator('[data-bind*="value: NovoModelo.AnoFim"]');
+        await this.clearAndFill(anoFimInput, '2026');
+
+        await this.page.locator('[data-bind*="integerMask: NovoModelo.Cilindradas"]').fill('150');
+        await this.page.locator('[data-bind*="integerMask: NovoModelo.Cavalos"]').fill('500');
+        await this.page.locator('#btnSalvar').click();
+        await expect(this.page.getByText('Modelo Cadastrado com sucesso')).toBeVisible();
+    }
+
+    async clearAndFill(locator: Locator, value: string): Promise<void> {
+        await locator.clear();
+        await locator.fill(value);
     }
 }

@@ -26,3 +26,29 @@ test('Acessar a página de listagem e atualizar o modelo de automóvel do fabric
   await automotiveModelsPage.updateVehicle();
 
 });
+
+
+test('Acessar a página de listagem e deletar o modelo de automóvel do fabricante Chevrolet, da familia Astra Hatch e molicar 01701825-0 ', async ({ page }) => {
+  const automotiveModelsPage = new AutomotiveModelsPage(page);
+  const homePage = new HomePage(page);
+
+  await homePage.access();
+  await homePage.clickStartButton();
+  await homePage.accessTemplatesScreen();
+  await automotiveModelsPage.validateFilters();
+  await automotiveModelsPage.deleteVehicle();
+  await homePage.access();
+
+});
+
+test('Acessar a página de listagem de modelos e criar um modelo personalizado ', async ({ page }) => {
+  const automotiveModelsPage = new AutomotiveModelsPage(page);
+  const homePage = new HomePage(page);
+
+  await homePage.access();
+  await homePage.clickStartButton();
+  await homePage.accessTemplatesScreen();
+  await automotiveModelsPage.createModel();
+
+
+});
